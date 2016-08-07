@@ -2,27 +2,26 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Mark from '../components/Mark'
-import Menu from '../containers/Menu'
-import * as menuActions from '../actions/MenuActions'
+import FindForm from '../components/FindForm'
+import CreateForm from '../components/CreateForm'
+import * as markActions from '../actions/MarkActions'
 
 class App extends Component {
   render() {
     const markList = this.props.markList;
-    const {findMark} = this.props.menuActions
+    const {findMark, createMark, removeMark} = this.props.markActions
     const markTemplate = markList.map(function (item) {
       return (
-        <Mark title={item.title} text={item.text} id= {item.id}/>
+        <Mark title={item.title} text={item.text} id= {item.id} removeMark={removeMark}/>
       )
     })
-    return <div class="container">
-      <Menu findMark={findMark}/>
-      <div class="row">
-        <div class="col-md-12">
+    return <div className="container">
+      <FindForm findMark={findMark}/>
+      <CreateForm createMark={createMark}/>
+      <div className="row">
+        <div className="col-md-12">
           {markTemplate}
         </div>
-      </div>
-      <div>
-
       </div>
     </div>
   }
@@ -37,7 +36,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    menuActions: bindActionCreators(menuActions, dispatch)
+    markActions: bindActionCreators(markActions, dispatch)
   }
 }
 

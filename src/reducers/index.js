@@ -14,7 +14,18 @@ export default function userstate(state = initialState, action) {
                 markList: state.markList.filter(function (el) {
                     return new RegExp(action.payload).test(el.title);
                 })
-            } : state
+            } : state;
+        case 'REMOVE_MARK':
+            let targetMark = state.markList.find(function (el) { return el.id === action.payload }),
+                removeIndex = state.markList.indexOf(targetMark),
+                listCopy = state.markList.slice(0);
+            listCopy.splice(removeIndex, 1);
+            return { state, markList: listCopy }
+        case 'CREATE_MARK':
+            let maxId = Math.max.apply(null, state.markList.map(function (el) { return el.id })),
+                copy = state.markList.slice(0);
+            copy.push(Object.assign({ id: maxId + 1 }, action.payload))
+            return { state, copy }
         default:
             return state;
     }
