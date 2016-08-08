@@ -28,3 +28,14 @@ export function editMark(markId) {
         payload: markId
     }
 }
+
+export function saveMark(markId, text, title) {
+    return {
+        type: 'SAVE_MARK',
+        payload: {
+            markId,
+            title,
+            text
+        }
+    }
+}

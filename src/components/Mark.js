@@ -6,10 +6,17 @@ export default class Mark extends Component {
     }
     render() {
         const { title, text, id } = this.props
+        const hStyle = {
+            marginRight: '10px',
+            marginTop: '20px',
+            marginBottom: '5px'
+        }
         return <div key={id}>
-            <h4>{title}</h4>
-            <p>{text}</p>
-            <button onClick={() =>this.removeMark(id)}>Удалить</button>
+            <h4 style={hStyle}>{title}
+                <button onClick={() => this.removeMark(id) }>Редактировать</button>
+                <button onClick={() => this.removeMark(id) }>Удалить</button>
+            </h4>
+            <p style={{ marginTop: '5px' }}>{text}</p>
         </div>
     }
 }

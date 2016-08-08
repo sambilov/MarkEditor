@@ -25,9 +25,11 @@ export default function userstate(state = initialState, action) {
             let maxId = Math.max.apply(null, state.markList.map(function (el) { return el.id })),
                 copy = state.markList.slice(0);
             copy.push(Object.assign({ id: maxId + 1 }, action.payload))
-            return { state, copy }
+            return { state, markList: copy }
         default:
             return state;
     }
 }
+
+
 
