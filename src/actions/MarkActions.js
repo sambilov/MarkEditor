@@ -24,7 +24,7 @@ export function removeMark(markId) {
 
 export function editMark(markId) {
     return {
-        type: 'REMOVE_MARK',
+        type: 'EDIT_MARK',
         payload: markId
     }
 }

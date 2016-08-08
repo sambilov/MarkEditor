@@ -6,6 +6,12 @@ import configureStore from './store/configureStore'
 
 const store = configureStore()
 
+window.addEventListener('storage', () => {
+  store.dispatch({
+    type: 'RELOAD_STATE'
+  })
+})
+
 render(
   <Provider store={store}>
     <App />

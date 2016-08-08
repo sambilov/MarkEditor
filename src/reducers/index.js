@@ -3,12 +3,6 @@ import {getMarkList, getQueryString, addMark, removeMark, setQueryString} from '
 const initialState = {
     queryString: getQueryString(),
     markList: getMarkList()
-    // [
-    //     { title: 'test title', text: 'test text content', id: 0 },
-    //     { title: 'test title 1', text: 'test text content 1', id: 1 },
-    //     { title: 'test title 2', text: 'test text content 2', id: 2 },
-    //     { title: 'test title 3', text: 'test text  content 3', id: 3 }
-    // ]
 }
 
 export default function userstate(state = initialState, action) {
@@ -23,6 +17,11 @@ export default function userstate(state = initialState, action) {
             let maxId = Math.max.apply(null, state.markList.map(function (el) { return el.id }))
             addMark(Object.assign({ id: maxId + 1 }, action.payload))
             return { state, markList: getMarkList(state.queryString) }
+        case 'RELOAD_STATE':
+            return {
+                queryString: getQueryString(),
+                markList: getMarkList()
+            }
         default:
             return state;
     }
