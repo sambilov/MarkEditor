@@ -7,12 +7,13 @@ export default class FindForm extends Component {
     }
     render() {
         return <form>
-            <input id="query-field" type="text"/>
+            <input id="query-field" type="text" defaultValue={this.props.queryString}/>
             <input type="button" value="Найти" onClick={this.findMark.bind(this) }/>
         </form>
     }
 }
 
 FindForm.propTypes = {
-    findMark: PropTypes.func.isRequired
+    findMark: PropTypes.func.isRequired,
+    queryString: PropTypes.string.isRequired
 }

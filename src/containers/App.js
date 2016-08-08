@@ -8,7 +8,7 @@ import * as markActions from '../actions/MarkActions'
 
 class App extends Component {
   render() {
-    const markList = this.props.markList;
+    const {markList, queryString} = this.props;
     const {findMark, createMark, removeMark} = this.props.markActions
     const markTemplate = markList.map(function (item) {
       return (
@@ -16,7 +16,7 @@ class App extends Component {
       )
     })
     return <div className="container">
-      <FindForm findMark={findMark}/>
+      <FindForm findMark={findMark} queryString={queryString}/>
       <CreateForm createMark={createMark}/>
       <div className="row">
         <div className="col-md-12">

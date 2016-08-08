@@ -13,7 +13,7 @@ export default class Mark extends Component {
         }
         return <div key={id}>
             <h4 style={hStyle}>{title}
-                <button onClick={() => this.removeMark(id) }>Редактировать</button>
+                <button>Редактировать</button>
                 <button onClick={() => this.removeMark(id) }>Удалить</button>
             </h4>
             <p style={{ marginTop: '5px' }}>{text}</p>
